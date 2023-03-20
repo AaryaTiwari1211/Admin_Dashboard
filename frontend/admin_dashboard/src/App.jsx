@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ColorModeContext, useThemeMode } from './theme'
 import { CssBaseline, ThemeProvider } from '@mui/material'
+import Sidebar2 from "./pages/global/Sidebar/Sidebar2";
 import Topbar from './pages/global/TopBar/Topbar'
 import Dashboard from './pages/Dashboard/dashboard'
 import Invoices from './pages/Invoices/Invoices'
@@ -15,34 +17,37 @@ import Team from './pages/Team/Team'
 import Calendar from './pages/Calendar/Calendar'
 
 const App = () => {
-  const [theme, colorMode] = useThemeMode()
+  const [theme, colorMode] = useThemeMode();
+  const [isSidebar, setIsSidebar] = useState(true);
+
   return (
     <BrowserRouter>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <div className="App">
-            <main className='content'>
-              <Topbar />
+          <div className="app">
+            <Sidebar2 isSidebar={isSidebar} />
+            <main className="content">
+              <Topbar setIsSidebar={setIsSidebar} />
               <Routes>
-                <Route path='/' element={<Dashboard/>} />
-                <Route path='/team' element={<Team/>} />
-                <Route path='/invoices' element={<Invoices/>} />
-                <Route path='/contacts' element={<Contacts/>} />
-                <Route path='/FAQ' element={<FAQ/>} />
-                <Route path='/form' element={<Form/>} />
-                <Route path='/bar' element={<Bar/>} />
-                <Route path='/line' element={<Line/>} />
-                <Route path='/pie' element={<Pie/>} />
-                <Route path='/geography' element={<Geography/>} />
-                <Route path='/calendar' element={<Calendar/>} />
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/team" element={<Team />} />
+                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/invoices" element={<Invoices />} />
+                <Route path="/form" element={<Form />} />
+                <Route path="/bar" element={<Bar />} />
+                <Route path="/pie" element={<Pie />} />
+                <Route path="/line" element={<Line />} />
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/calendar" element={<Calendar />} />
+                <Route path="/geography" element={<Geography />} />
               </Routes>
             </main>
           </div>
         </ThemeProvider>
       </ColorModeContext.Provider>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App
