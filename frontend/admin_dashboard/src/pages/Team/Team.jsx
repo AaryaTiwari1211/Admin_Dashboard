@@ -1,4 +1,5 @@
 import React from 'react'
+import {useState} from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 import { tokens } from '../../theme'
@@ -11,6 +12,7 @@ import { borderBottom } from '@mui/system'
 
 
 function Team() {
+  const [data, setData] = useState([])
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const columns = [
