@@ -4,7 +4,7 @@ import { ColorModeContext, useThemeMode } from './theme'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import Sidebar2 from "./pages/global/Sidebar/Sidebar2";
 import Topbar from './pages/global/TopBar/Topbar'
-import Dashboard from './pages/Dashboard/dashboard'
+import Dashboard from './pages/Dashboard/Dashboard'
 import Invoices from './pages/Invoices/Invoices'
 import Contacts from './pages/Contacts/Contacts'
 import Bar from './pages/Bar/Bar'

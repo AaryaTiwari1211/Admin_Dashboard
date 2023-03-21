@@ -57,7 +57,7 @@ const Sidebar2 = () => {
                 },
                 "& .pro-inner-item:hover": {
                     transitionProperty: 'all !important',
-                    transitionDelay: '0.1s !important',
+                    transitionDuration: '0.2s !important',
                     transitionTimingFunction:'ease-in-out !important',
                     backgroundColor: `${colors.primary[700]} !important`,
                 },
@@ -132,7 +132,7 @@ const Sidebar2 = () => {
                         />
 
                         <Typography
-                            variant="h3"
+                            variant="h5"
                             color={colors.grey[100]}
                             sx={{ m: "15px 0 5px 20px" }}
                         >
@@ -161,7 +161,7 @@ const Sidebar2 = () => {
                         />
 
                         <Typography
-                            variant="h3"
+                            variant="h5"
                             color={colors.grey[100]}
                             sx={{ m: "15px 0 5px 20px" }}
                         >
@@ -190,7 +190,7 @@ const Sidebar2 = () => {
                         />
 
                         <Typography
-                            variant="h3"
+                            variant="h5"
                             color={colors.grey[100]}
                             sx={{ m: "15px 0 5px 20px" }}
                         >

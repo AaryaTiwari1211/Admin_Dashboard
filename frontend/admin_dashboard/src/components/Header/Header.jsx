@@ -1,6 +1,7 @@
 import React from 'react'
 import { Typography, useTheme, Box } from '@mui/material'
-import tokens from '../theme'
+import {tokens} from '../../theme'
+import './Header.css'
 
 function Header({title , subtitle}) {
     const theme = useTheme()
@@ -8,14 +9,19 @@ function Header({title , subtitle}) {
     return (
         <Box mb='30px'>
             <Typography
-                variant={h2}
+                variant='h2'
                 color={colors.grey[100]}
                 fontWeight='bold'
                 sx={{ mb: '5px' }}>
-                {title}
+                    <span className='title'>
+                        {title}
+                    </span>
             </Typography>
-            <Typography variant='h5' color={colors.green_accent[400]}> 
-                {subtitle}
+            <Typography variant='h5' color={colors.greenAccent[400]}> 
+                <span>
+                    {subtitle}
+                </span>
+                
             </Typography>
         </Box>
     )

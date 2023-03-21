@@ -1,0 +1,10 @@
+.title{
+    transition: all;
+}
+
+.title:hover{
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+    color: #624aff;
+    cursor: pointer;
+}
