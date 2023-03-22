@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
-import { DataGrid } from '@mui/x-data-grid'
+import { DataGrid , GridToolbar } from '@mui/x-data-grid'
 import { tokens } from '../../theme'
 import { mockDataTeam } from '../../Data/mockData'
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined'
@@ -12,7 +12,7 @@ import { borderBottom } from '@mui/system'
 
 
 function Team() {
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const columns = [

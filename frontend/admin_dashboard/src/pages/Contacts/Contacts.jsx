@@ -1,11 +1,8 @@
 import React from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
-import { DataGrid } from '@mui/x-data-grid'
+import { DataGrid , GridToolbar } from '@mui/x-data-grid'
 import { tokens } from '../../theme'
 import { mockDataContacts } from '../../Data/mockData'
-import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined'
-import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined'
-import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined'
 import Header from '../../components/Header/Header'
 import { borderBottom } from '@mui/system'
 
@@ -17,7 +14,11 @@ function Contacts() {
         {
             field: 'id',
             headerName: 'ID',
-            flex: 1,
+            flex: 0.5,
+        },
+        {
+            field: 'registrarId',
+            headerName: 'Registrar ID',
         },
         {
             field: 'name',
@@ -43,52 +44,26 @@ function Contacts() {
             headerName: 'Phone Number',
             flex: 1,
         },
-        // {
-        //     field: 'access',
-        //     headerName: 'Access Level',
-        //     flex: 1,
-        //     renderCell: ({ row: { access } }) => {
-        //         return (
-        //             <Box
-        //                 width='50%'
-        //                 m='0 auto'
-        //                 p='5px'
-        //                 display='flex'
-        //                 justifyContent='center'
-        //                 backgroundColor={
-        //                     access === 'admin'
-        //                         ? colors.greenAccent[600]
-        //                         : colors.greenAccent[700]
-        //                 }
-        //                 borderRadius='3px'
-        //             >
-        //                 {
-        //                     access === 'admin' &&
-        //                     <AdminPanelSettingsOutlinedIcon />
-        //                 }
-        //                 {
-        //                     access === 'manager' &&
-        //                     <SecurityOutlinedIcon />
-        //                 }
-        //                 {
-        //                     access === 'user' &&
-        //                     <LockOpenOutlinedIcon />
-        //                 }
-        //                 <Typography
-        //                     color={colors.grey[100]}
-        //                     sx={{ ml: '5px' }}
-        //                 >{access}</Typography>
-        //             </Box>
-        //         )
-        //     }
-        // },
         {
-            
-        }
+            field: 'address',
+            headerName: 'Address',
+            flex: 1,
+        },
+        {
+            field: 'city',
+            headerName: 'City',
+            flex: 1,
+        },
+        {
+            field: 'zipCode',
+            type: 'number',
+            headerName: 'Zip Code',
+            flex: 1,
+        },
     ]
     return (
         <Box m='20px'>
-            <Header title='TEAM' subtitle='Teams are Managed Here' />
+            <Header title='CONTACTS' subtitle='Contacts are Managed Here' />
             <Box
                 m='40px 0 0 0'
                 height='75vh'
@@ -101,10 +76,6 @@ function Contacts() {
                         "& .MuiDataGrid-cell":
                         {
                             borderBottom: 'none'
-                        },
-                        "& .name-column--cell":
-                        {
-                            color: colors.greenAccent[100]
                         },
                         "& .MuiDataGrid-columnHeaders":
                         {
@@ -120,12 +91,17 @@ function Contacts() {
                             borderTop: 'nono',
                             backgroundColor: colors.blueAccent[700],
                         },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text":
+                        {
+                            color:`${colors.grey[100]} !important`,
+                        }
                     }
                 }
             >
                 <DataGrid
-                    rows={mockDataTeam}
+                    rows={mockDataContacts}
                     columns={columns}
+                    components={{Toolbar: GridToolbar}}
                 />
             </Box>
         </Box>
