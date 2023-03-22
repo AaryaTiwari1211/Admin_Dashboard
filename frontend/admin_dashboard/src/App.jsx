@@ -16,6 +16,7 @@ import Geography from './pages/Geography/Geography'
 import Team from './pages/Team/Team'
 import Calendar from './pages/Calendar/Calendar'
 
+
 const App = () => {
   const [theme, colorMode] = useThemeMode();
   const [isSidebar, setIsSidebar] = useState(true);
