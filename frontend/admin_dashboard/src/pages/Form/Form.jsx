@@ -8,7 +8,7 @@ import { useMediaQuery } from '@mui/material'
 import Header from '../../components/Header/Header'
 
 function Form() {
-    const Mobile = useMediaQuery('(max-width:600px)')
+    const Mobile = useMediaQuery('(max-width:800px)')
     const PHONE_REGEX = /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/i
     const theme = useTheme()
     const colors = tokens(theme.palette.mode)
@@ -150,7 +150,7 @@ function Form() {
                         <Box height='30px' />
                         <Box
                             width='100%'
-                            textAlign='center'
+                            ml='9px'
                         >
                             <TextField
                                 variant='filled'
@@ -174,7 +174,7 @@ function Form() {
                         <Box height='30px' />
                         <Box
                             width='100%'
-                            textAlign='center'
+                            ml='9px'
                         >
                             <TextField
                                 variant='filled'
