@@ -1,0 +1,7 @@
+.threespan{
+    transition: all 0.3s;
+}
+
+.threespan:hover{
+    transform: scale(1.05);
+}

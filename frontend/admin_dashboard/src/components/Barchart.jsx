@@ -1,8 +1,8 @@
 import React from 'react'
 import { ResponsiveBar } from '@nivo/bar'
 import { useTheme } from '@mui/material'
-import {tokens} from '../../theme'
-import { mockBarData as data } from '../../Data/mockData'
+import {tokens} from '../theme'
+import { mockBarData as data } from '../Data/mockData'
 
 function Barchart({isDashboard = false}) {
     const theme = useTheme()

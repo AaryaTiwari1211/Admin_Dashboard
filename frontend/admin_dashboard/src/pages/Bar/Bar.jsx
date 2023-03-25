@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, colors } from '@mui/material'
 import Header from '../../components/Header/Header'
-import Barchart from '../../components/Barchart/Barchart'
+import Barchart from '../../components/Barchart'
 
 function Bar() {
     return (
