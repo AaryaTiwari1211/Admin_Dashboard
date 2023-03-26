@@ -98,7 +98,7 @@ const Dashboard = () => {
                 >
                     <Stats
                         title="32,441"
-                        subtitle="rejections Faced"
+                        subtitle="Rejections Faced"
                         progress="0.30"
                         increase="+270%"
                         icon={

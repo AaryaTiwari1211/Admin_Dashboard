@@ -12,25 +12,28 @@ import SearchIcon from "@mui/icons-material/Search";
 const Topbar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    // colorMode allows toggling btw Light and Dark Mode
     const colorMode = useContext(ColorModeContext);
 
     return (
+        // Outer Box 
+        // This has the display:flex with space between so the components are at each end
         <Box display="flex" justifyContent="space-between" p={2}>
-            {/* SEARCH BAR */}
             <Box
                 display="flex"
                 backgroundColor={colors.primary[400]}
                 borderRadius="3px"
             >
+                {/* Search Bar */}
                 <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
                 <IconButton type="button" sx={{ p: 1 }}>
                     <SearchIcon />
                 </IconButton>
             </Box>
 
-            {/* ICONS */}
             <Box display="flex">
                 <IconButton 
+                    // The main button to Toggle Light and Dark Mode
                     onClick={colorMode.toggleColorMode}
                 >
                     {theme.palette.mode === "dark" ? (
@@ -39,6 +42,7 @@ const Topbar = () => {
                         <LightModeOutlinedIcon />
                     )}
                 </IconButton>
+                {/* Some other icons for frontend purpose */}
                 <IconButton>
                     <NotificationsOutlinedIcon />
                 </IconButton>

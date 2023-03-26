@@ -1,20 +1,20 @@
 import React from 'react'
-import {useState} from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
-import { DataGrid , GridToolbar } from '@mui/x-data-grid'
+// X_Data-Grid is used for making the tables
+import { DataGrid } from '@mui/x-data-grid'
 import { tokens } from '../../theme'
 import { mockDataTeam } from '../../Data/mockData'
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined'
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined'
 import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined'
 import Header from '../../components/Header/Header'
-import { borderBottom } from '@mui/system'
 
 
 function Team() {
-  // const [data, setData] = useState([])
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+
+  // Columns for the X-Data-Grid Table
   const columns = [
     {
       field: 'id',
@@ -23,8 +23,8 @@ function Team() {
     {
       field: 'name',
       headerName: 'Full Name',
-      flex: 1,
-      cellClassName: 'name-column--cell',
+      flex: 1, // Sets Width for the cell
+      cellClassName: 'name-column--cell', // Will be edited later
     },
     {
       field: 'email',
@@ -48,7 +48,7 @@ function Team() {
       field: 'access',
       headerName: 'Access Level',
       flex: 1,
-      renderCell: ({ row: { access } }) => {
+      renderCell: ({ row: { access } }) => { //This shows what will be rendered ateach cell for specificity
         return (
           <Box
             width='50%'
@@ -58,7 +58,7 @@ function Team() {
             justifyContent='center'
             backgroundColor={
               access === 'admin'
-                ? colors.greenAccent[600]
+                ? colors.greenAccent[600] // Color Changes based on the user access along with the Icon
                 : colors.greenAccent[700]
             }
             borderRadius='3px'
@@ -92,36 +92,36 @@ function Team() {
       height='75vh'
       sx={
         {
-          "& .MuiDataGrid-root": 
+          "& .MuiDataGrid-root": // Taregts the Datagrid main class
           {
             border: 'none'
           },
-          "& .MuiDataGrid-cell": 
+          "& .MuiDataGrid-cell": //Targets each cell in the table
           {
             borderBottom: 'none'
           },
-          "& .name-column--cell": 
+          "& .name-column--cell": //Targets the column 'name' cells
           {
-            color: colors.greenAccent[100]
+            color: colors.greenAccent[100] 
           },
-          "& .MuiDataGrid-columnHeaders": 
+          "& .MuiDataGrid-columnHeaders": //Targets the columnheader
           {
-            color: colors.blueAccent[100],
+            color: colors.grey[100],
             borderBottom: 'none'
           },
-          "& .MuiDataGrid-virtualScroller": 
+          "& .MuiDataGrid-virtualScroller": // targets the background of the Main Scroller
           {
             backgroundColor: colors.primary[400],
           },
-          "& .MuiDataGrid-footerContainer": 
+          "& .MuiDataGrid-footerContainer": //Targets the Footer
           {
             borderTop: 'nono',
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: colors.primary[400],
           },
         }
       }
       >
-        <DataGrid
+        <DataGrid // Takes 2 parameters rows and columns and creates the table
           rows={mockDataTeam}
           columns={columns}
         />

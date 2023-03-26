@@ -1,10 +1,11 @@
 import { useState } from "react";
-import './Sidebar.css'
+// IMPORTS FROM REACT PRO SIDEBAR 
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../../theme";
+// ICONS FROM MUI-ICONS
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -18,6 +19,8 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
+
+// This component is for each menu item in the sidebar
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -26,12 +29,12 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
             className="menuitem"
             active={selected === title} // Selects the active Menu Item
             style={{
-                color: colors.grey[100], 
+                color: colors.grey[100],
             }}
             onClick={() => setSelected(title)} // Sets the selected Menu item to the current title
             icon={icon}
         >
-            <Typography>{title}</Typography> 
+            <Typography>{title}</Typography>
             <Link to={to} />
         </MenuItem>
     );
@@ -44,8 +47,10 @@ const Sidebar2 = () => {
     const [selected, setSelected] = useState("Dashboard");
 
     return (
+        // OVERLAPPING BOX
         <Box
             sx={{
+                // !important is used to overwrite the exisitng components
                 "& .pro-sidebar-inner": {
                     background: `${colors.primary[400]} !important`,
                 },
@@ -58,17 +63,23 @@ const Sidebar2 = () => {
                 "& .pro-inner-item:hover": {
                     transitionProperty: 'all !important',
                     transitionDuration: '0.2s !important',
-                    transitionTimingFunction:'ease-in-out !important',
-                    backgroundColor: `${colors.primary[700]} !important`,
+                    transitionTimingFunction: 'ease-in-out !important',
+                    color: `${colors.grey[100]} !important`,
+                    backgroundColor: `${colors.primary[900]} !important`,
                 },
                 "& .pro-menu-item.active": {
-                    backgroundColor: `${colors.primary[700]} !important`,
+                    color: `${colors.grey[100]} !important`,
+                    backgroundColor: `${colors.primary[900]} !important`,
                 },
             }}
         >
-            <ProSidebar collapsed={isCollapsed}>
+            {/* MAIN SIDEBAR */}
+            <ProSidebar 
+                // The collapsed attributed sets the state for collapse automatically ffor all menu items
+                collapsed={isCollapsed}
+            >
                 <Menu iconShape="square">
-                    {/* LOGO AND MENU ICON */}
+                    {/* This part is on when collapse is true */}
                     <MenuItem
                         onClick={() => setIsCollapsed(!isCollapsed)}
                         icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
@@ -77,6 +88,7 @@ const Sidebar2 = () => {
                             color: colors.grey[100],
                         }}
                     >
+                        {/* This part only appears when the collapse is false */}
                         {!isCollapsed && (
                             <Box
                                 display="flex"
@@ -85,6 +97,7 @@ const Sidebar2 = () => {
                                 ml="15px"
                             >
                                 <Typography variant="h3" color={colors.grey[100]}>
+
                                     ADMIN DASH
                                 </Typography>
                                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -121,8 +134,8 @@ const Sidebar2 = () => {
                             </Box>
                         </Box>
                     )}
-
-                    <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+                    {/* Starts the main components in the sidebar  */}
+                    <Box paddingLeft={isCollapsed ? undefined : "1%"}>
                         <Item
                             title="Dashboard"
                             to="/"

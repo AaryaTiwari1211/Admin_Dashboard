@@ -8,6 +8,7 @@ function Piechart(isDashboard=false) {
     const theme = useTheme()
     const colors = tokens(theme.palette.mode)
     return (
+        // This code is directly imported from the nivo.rocks website expect the theme attribute
         <ResponsivePie
             data={data}
             theme={{

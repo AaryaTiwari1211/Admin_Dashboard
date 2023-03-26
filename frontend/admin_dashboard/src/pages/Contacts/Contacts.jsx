@@ -10,6 +10,7 @@ import { borderBottom } from '@mui/system'
 function Contacts() {
     const theme = useTheme()
     const colors = tokens(theme.palette.mode)
+    // Similar to the Team Page 
     const columns = [
         {
             field: 'id',
@@ -101,7 +102,7 @@ function Contacts() {
                 <DataGrid
                     rows={mockDataContacts}
                     columns={columns}
-                    components={{Toolbar: GridToolbar}}
+                    components={{Toolbar: GridToolbar}} // An Extra Tool which has some Extra Functionality
                 />
             </Box>
         </Box>

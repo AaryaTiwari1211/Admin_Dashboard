@@ -20,9 +20,10 @@ import interactionPlugin from '@fullcalendar/interaction'
 function Calendar() {
     const theme = useTheme()
     const colors = tokens(theme.palette.mode)
-    const [currentEvents, setcurrentEvents] = useState([])
+    const [currentEvents, setcurrentEvents] = useState([]) // Updates the Current Events when user adds the Event
 
     const handleDateClick = (selected) => {
+        // This Prompt appears when an Event is clicked on the calendar
         const title = prompt("Please select a new title for your event")
         const calendarApi = selected.view.calendar;
         calendarApi.unselect()
@@ -31,6 +32,7 @@ function Calendar() {
             calendarApi.addEvent({
                 id: `${selected.dateStr}${title}`,
                 title: `${title}`,
+                // Setting the Start day , End Day and if the event is all-day long or not
                 start: selected.startStr,
                 end: selected.endStr,
                 allDay: selected.allDay,
@@ -39,6 +41,7 @@ function Calendar() {
         console.log(currentEvents)
     }
     const handleEventClick = (selected) => {
+        // This Functions removes the event if you click on it a second Time..
         if (window.confirm(`Are you Sure you want to delete the event!! ${selected.event.title}`)) {
             selected.event.remove()
         }
@@ -46,8 +49,8 @@ function Calendar() {
     return (
         <Box m='20px'>
             <Header title='CALENDAR' subtitle='This shows the Calendar' />
-
             <Box display='flex' justifyContent='space-between'>
+                {/* The left side box for shwoing current events */}
                 <Box
                     flex='1 1 20%'
                     backgroundColor={colors.primary[400]}
@@ -58,10 +61,10 @@ function Calendar() {
                         variant='h5'
                     >
                         Events
-                    </Typography>
-                    <List>
+                    </Typography>   
+                    <List> 
                         {currentEvents.map((event) => (
-                            <ListItem
+                            <ListItem // using MUI Lists to List out the events
                                 key={event.id}
                                 sx={{
                                     backgroundColor: colors.greenAccent[500],
@@ -73,7 +76,7 @@ function Calendar() {
                                     primary={event.title}
                                     secondary={
                                         <Typography>
-                                            {formatDate(event.start, {
+                                            {formatDate(event.start, { // Format date allows to set the date in the format whe want
                                                 year: "numeric",
                                                 month: "short",
                                                 day: "numeric",
@@ -89,12 +92,14 @@ function Calendar() {
                     <FullCalendar
                         height='75vh'
                         plugins={[
+                            // Some of the inbuilt Plugins which allow different views in Fullcalendar
                             dayGridPlugin,
                             timeGridPlugin,
                             interactionPlugin,
                             listPlugin
                         ]}
                         headerToolbar={{
+                            // the header toolbar has some functionality 
                             left: 'prev,next,today',
                             center: 'title',
                             right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
@@ -104,9 +109,10 @@ function Calendar() {
                         selectable={true}
                         selectMirror={true}
                         dayMaxEvents={true}
-                        select={handleDateClick}
-                        eventClick={handleEventClick}
+                        select={handleDateClick} // Mentioned above 
+                        eventClick={handleEventClick} // Mentioned Above
                         eventsSet={(events) => {
+                            // Appends events 
                             setcurrentEvents(events)
                         }}
                         initialEvents={[

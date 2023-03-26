@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResponsiveBar } from '@nivo/bar'
+import { ResponsiveBar } from '@nivo/bar' 
 import { useTheme } from '@mui/material'
 import {tokens} from '../theme'
 import { mockBarData as data } from '../Data/mockData'
@@ -8,6 +8,7 @@ function Barchart({isDashboard = false}) {
     const theme = useTheme()
     const colors = tokens(theme.palette.mode)
     return (
+        // This code is directly imported from the nivo.rocks website expect the theme attribute
         <ResponsiveBar
             data={data}
             theme={{

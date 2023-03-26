@@ -16,20 +16,25 @@ import Geography from './pages/Geography/Geography'
 import Team from './pages/Team/Team'
 import Calendar from './pages/Calendar/Calendar'
 
-
 const App = () => {
+  // Allows to adapt the theme made in theme.js
   const [theme, colorMode] = useThemeMode();
+  // A button is made which changes the state of the sidebar to open and close
   const [isSidebar, setIsSidebar] = useState(true);
 
   return (
     <BrowserRouter>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
+          <CssBaseline /> 
+          {/* The CssBaseline component helps to kickstart an elegant, consistent, and simple baseline to build upon. */}
           <div className="app">
+            {/* Sidebar Component */}
             <Sidebar2 isSidebar={isSidebar} />
             <main className="content">
               <Topbar setIsSidebar={setIsSidebar} />
+              {/* This comes from the react-router-dom allowing to route to pages */}
+              {/* ROUTING */}
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/team" element={<Team />} />
